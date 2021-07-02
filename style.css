@@ -1,0 +1,70 @@
+body {
+    background-color: #90f3f3;
+}
+
+#main {
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+#message {
+    border: 1px solid;
+    border-color: #cccccc;
+    background-color: #ffffff;
+    border-radius: 40px;
+    height: 5%;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+#message > * {
+    border-radius: 40px;
+}
+#message-text {
+    border: 0;
+    width: 90%;
+}
+#message-button {
+    border-color: #cccccc;
+    width: 10%;
+}
+
+#info {
+    margin-left: 25%;
+    margin-top: 35%;
+    height: 30%;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+}
+#info > * {
+    width: 100%;
+    height: 33.33%;
+    border-radius: 40px;
+    border-color: #cccccc;
+}
+#info > div {
+    border: 1px solid;
+    border-color: #cccccc;
+    background-color: #ffffff;
+    border-radius: 40px;
+    height: 33.33%;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+#info > div > button {
+    width: 25%;
+    border-radius: 40px;
+    border: 1px solid;
+    border-color: #cccccc;
+}
+#info > div > input {
+    border-radius: 40px;
+    border: 0;
+    border-color: #cccccc;
+    width: 75%;
+}
+#info > button {
+    margin-left: 25%;
+    width: 50%;
+}
