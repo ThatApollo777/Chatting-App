@@ -1,30 +1,35 @@
 <html>
     <head>
         <title>
-            Chatting-App
+            Sign in
         </title>
         <link rel="stylesheet" href="style.css">
-        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
         <script>
-            const firebaseConfig = {
-                apiKey: "AIzaSyCBj8BgkVfjO097CTzl9PLEA32pPHPYw4s",
-                authDomain: "chatting-app-79c6c.firebaseapp.com",
-                databaseURL: "https://chatting-app-79c6c-default-rtdb.asia-southeast1.firebasedatabase.app/",
-                projectId: "chatting-app-79c6c",
-                storageBucket: "chatting-app-79c6c.appspot.com",
-                messagingSenderId: "694999968410",
-                appId: "1:694999968410:web:f5b7deb637976b6f218d23"
-            };
-            firebase.initializeApp(firebaseConfig);
+            function transfer () {
+                let data = {
+                    'email' : document.getElementById('info-email'),
+                    'name'  : document.getElementById('info-name' )
+                }
+                window.location.href = 'chat.html';
+            }
         </script>
-        <script src="main.js"></script>
     </head>
-    <body id="main">
-        <div id="message">
-            <input id="message-text" type="text">
-            <button id="message-button" onclick="send()">
-                SEND
+    <body id="notMains">
+        <div id="info">
+            <div>
+                <button>
+                    EMAIL : 
+                </button>
+                <input type="text" id="info-email">
+            </div>
+            <div>
+                <button>
+                    NAME : 
+                </button>
+                <input type="text" id="info-name">
+            </div>
+            <button id="info-button" onclick="transfer()">
+                SIGN IN
             </button>
         </div>
     </body>
