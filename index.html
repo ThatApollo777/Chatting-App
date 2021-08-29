@@ -3,14 +3,63 @@
         <title>
             Sign in
         </title>
-        <link rel="stylesheet" href="style.css">
+        <style>
+            body {
+                background-color: #90f3f3;
+            }
+
+            #info {
+                margin-left: 25%;
+                margin-top: 15%;
+                height: 30%;
+                width: 50%;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            #info > * {
+                width: 100%;
+                height: 33.33%;
+                border-radius: 40px;
+                border-color: #cccccc;
+            }
+            #info > div {
+                border: 1px solid;
+                border-color: #cccccc;
+                background-color: #ffffff;
+                border-radius: 40px;
+                height: 33.33%;
+                width: 100%;
+                display: flex;
+                flex-wrap: nowrap;
+            }
+            #info > div > button {
+                width: 25%;
+                border-radius: 40px;
+                border: 1px solid;
+                border-color: #cccccc;
+            }
+            #info > div > input {
+                border-radius: 40px;
+                border: 0;
+                border-color: #cccccc;
+                width: 75%;
+            }
+            #info > button {
+                margin-left: 25%;
+                width: 50%;
+            }
+        </style>
         <script>
+            "use strict"
             function transfer () {
-                let data = {
-                    'email' : document.getElementById('info-email'),
-                    'name'  : document.getElementById('info-name' )
+                if (document.getElementById('info-email').value != "" && document.getElementById('info-name' ).value != "") {
+                    let data = {
+                        'email' : document.getElementById('info-email').value,
+                        'name'  : document.getElementById('info-name' ).value
+                    }
+                    console.log(data)
+                    window.location.href = 'chat.html';
                 }
-                window.location.href = 'chat.html';
             }
         </script>
     </head>
@@ -18,13 +67,13 @@
         <div id="info">
             <div>
                 <button>
-                    EMAIL : 
+                    EMAIL (required) : 
                 </button>
                 <input type="text" id="info-email">
             </div>
             <div>
                 <button>
-                    NAME : 
+                    NAME (required) : 
                 </button>
                 <input type="text" id="info-name">
             </div>

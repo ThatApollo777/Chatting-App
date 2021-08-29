@@ -3,7 +3,47 @@
         <title>
             Chatting-App
         </title>
-        <link rel="stylesheet" href="style.css">
+        <style>
+            body {
+                background-color: #90f3f3;
+                display: flex;
+                flex-wrap: wrap-reverse;
+            }
+            #messages {
+                width: 100%;
+                overflow: auto;
+                height: 90%;
+            }
+            #message, #messages > div{
+                border: 1px solid;
+                border-color: #cccccc;
+                background-color: #ffffff;
+                border-radius: 40px;
+                height: 5%;
+                width: 100%;
+                margin-top: 1%;
+                display: flex;
+                flex-wrap: nowrap;
+            }
+            #message-text, #messages > div > p{
+                border-radius: 40px;
+                border: 0;
+                width: 87%;
+                text-align: center;
+                line-height: 5%;
+            }
+            #message-button, #messages > div > button{
+                border-radius: 40px;
+                border-color: #cccccc;
+                width: 13%;
+            }
+            #messages > div{
+                width: 75%;
+            }
+            .mine {
+                margin-left: 24%;
+            }
+        </style>
         <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
         <script>
@@ -18,14 +58,53 @@
             };
             firebase.initializeApp(firebaseConfig);
         </script>
-        <script src="main.js"></script>
+        <script>
+            "use strict"
+            let name = 'Aadish';
+            let database = firebase.database();
+            function send() {
+                let message = document.getElementById("message-text").value;
+                message = message.trim();
+                if (message.length > 0) {
+                    database.ref('messages').push({
+                    'msg': message,
+                    'from': "Aadish"
+                });
+                }
+            }
+            database.ref('messages').on('child_added', function (child) {
+                let newMess = child.val();
+                display(newMess.from, newMess.msg);
+            })
+            function display(from, val) {
+                let message = document.createElement('div'   );
+                message.setAttribute('class', 'text');
+                let msg     = document.createElement('p'     );
+                msg.innerText = val;
+                let check = true;
+                if (from == name) {
+                    message.appendChild(msg);
+                    check = false;
+                    from = 'You';
+                    message.setAttribute('class', 'mine');
+                }
+                let fro     = document.createElement('button');
+                fro.innerText = from;
+                message.appendChild(fro);
+                if (check) {
+                    message.appendChild(msg);
+                }
+                document.getElementById('messages').appendChild(message);
+            }
+        </script>
     </head>
-    <body id="main">
+    <body>
         <div id="message">
             <input id="message-text" type="text">
             <button id="message-button" onclick="send()">
                 SEND
             </button>
         </div>
+        <div id = "messages"></div>
     </body>
 </html>
